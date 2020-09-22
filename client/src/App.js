@@ -38,13 +38,14 @@ const App = () => {
   }
   const addToSavedList = id => {
     // This is stretch. Prevent the same movie from being "saved" more than once
+    setSaved(id);
   };
 
   return (
     <div>
-      <SavedList list={[ /* This is stretch */]} />
+      <SavedList list={[addToSavedList]} />
       <Route exact path="/">
-        <MovieList movies = {movieList}/>
+        <MovieList movies = {movieList} saved = {saved}/>
       </Route>
 
       <Route path="/movies/:id" component={Movie}/>
